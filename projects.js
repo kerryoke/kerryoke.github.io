@@ -1,8 +1,9 @@
-const ghUserName = "kerryoke";
+"use strict"
 
 async function getHangmanGameRepo(ghUserName) {
+    const ghUserName = "kerryoke";
     try {
-        const res = await fetch(`https://api.github.com/users/${ghUserName}/HangmanGame`)
+        const res = await fetch(`https://api.github.com/users/${ghUserName}/repos`)
         const data = await res.json();
         console.log(data);
     } catch (error) {
