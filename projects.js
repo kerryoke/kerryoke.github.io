@@ -1,3 +1,5 @@
+const ghUserName = "kerryoke";
+
 async function getHangmanGameRepo(ghUserName) {
     try {
         const res = await fetch(`https://api.github.com/users/${ghUserName}/HangmanGame`)
