@@ -1,4 +1,5 @@
-"use strict"
+"use strict";
+import { Octokit, App } from "octokit";
 
 async function getHangmanGameRepo(ghUserName) {
     const ghUserName = "kerryoke";
