@@ -10,18 +10,22 @@ app.use(express.static("./public"));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
-fetch('https://api.github.com/user', {
-  headers: {
-    'Authorization': CLIENT_ID
-  }
-})
+// fetch('https://api.github.com/user', {
+//   headers: {
+//     'Authorization': CLIENT_ID
+//   }
+// })
 
 // const ghUserName = "kerryoke";
 
 async function getHangmanGameRepo(ghUserName) {
     
     try {
-        const res = await fetch(`https://api.github.com/users/${ghUserName}/HangmanGame`)
+        const res = await fetch(`https://api.github.com/users/${ghUserName}/HangmanGame`, {
+            headers: {
+                'Authorization': CLIENT_ID
+            }
+        })
         const data = await res.json();
         console.log(data);
     } catch (error) {
