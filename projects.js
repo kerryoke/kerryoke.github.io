@@ -1,10 +1,20 @@
 "use strict";
-import { Octokit, App } from "octokit";
+
+import { Octokit} from "octokit";
+const octokit = new Octokit({ 
+  auth: CLIENT_ID,
+});
+
+fetch('https://api.github.com/user', {
+  headers: {
+    'Authorization': CLIENT_ID
+  }
+})
 
 async function getHangmanGameRepo(ghUserName) {
     const ghUserName = "kerryoke";
     try {
-        const res = await fetch(`https://api.github.com/users/${ghUserName}/repos`)
+        const res = await fetch(`https://api.github.com/users/${ghUserName}/HangmanGame`)
         const data = await res.json();
         console.log(data);
     } catch (error) {
