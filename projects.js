@@ -1,13 +1,12 @@
 "use strict";
 
-
 fetch('https://api.github.com/user', {
   headers: {
     'Authorization': CLIENT_ID
   }
 })
 
-const ghUserName = "kerryoke";
+// const ghUserName = "kerryoke";
 
 async function getHangmanGameRepo(ghUserName) {
     
@@ -42,3 +41,24 @@ async function getAboutMeRepo(ghUserName) {
     }
 }
 
+
+app.use("/api/v1/getHangmanGameRepo", async (request, response) => {
+    response.status(200).json({
+        status: 200,
+        data: await getHangmanGameRepo(),
+    });
+});
+
+
+app.listen(port, () => {
+    console.log(`Server is running http://localhost:${port}`);
+    console.log("Press Ctrl+C to end this process.");
+});
+
+require("dotenv").config();
+const cors = require("cors");
+
+const corsOptions = {
+    origin: `http://localhost:${port}`
+}
+app.use(cors(corsOptions));
